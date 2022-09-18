@@ -11,6 +11,8 @@ services:
     tty: true
     ports:
       - "3000:3000"
+    entrypoint: dockerize -wait tcp://mysql:3306 -timeout 50s
+    command: "node index.js"
     depends_on:
       - mysql
 
